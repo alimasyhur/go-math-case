@@ -39,3 +39,37 @@ func CalculateOddNumberFibonacci(n int) int {
 	}
 	return sum
 }
+
+//PrimeFactor number
+func PrimeFactor(number int) []int {
+	var arrPrimeFactor []int
+	for index := 2; index < number; index++ {
+		if (index%2 != 0) || (index%3 != 0) {
+			if number%index == 0 {
+				sum := 1
+				for _, value := range arrPrimeFactor {
+					sum = sum * value
+				}
+				if sum == number {
+					break
+				}
+				arrPrimeFactor = append(arrPrimeFactor, index)
+			}
+		}
+	}
+
+	return arrPrimeFactor
+}
+
+//HighestPrimeFctor number int: Case Three
+func HighestPrimeFctor(number int) int {
+	arrayPrimeFactor := PrimeFactor(number)
+	highestValue := 0
+	for _, value := range arrayPrimeFactor {
+		if value > highestValue {
+			highestValue = value
+		}
+	}
+
+	return highestValue
+}
